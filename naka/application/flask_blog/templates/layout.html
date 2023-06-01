@@ -13,19 +13,22 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Flask Blog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Togglenavigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav navbar-nav navbar-right">
+        {%if not session.logged_in %}
         <li class="nav-item">
           <a class="nav-link navbar-brand" href="/login">ログイン</a>
         </li>
+        {%else%}
         <li class="nav-item">
           <a class="nav-link navbar-brand" href="/logout">ログアウト</a>
         </li>
+        {%endif%}
       </ul>
     </div>
 

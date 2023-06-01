@@ -31,8 +31,14 @@
         {%endif%}
       </ul>
     </div>
-
   </nav>
+
+  {%for message in get_flashed_messages()%}
+  <div class="alert alert-info" role="alert">
+    {{message}}
+  </div>
+  {%endfor%}
+
   <div class="container">
     <div class="blog-body">
       {% block body %}{% endblock %}

@@ -1,3 +1,5 @@
 DEBUG = True
+# SECRET_KEY = "SECRET_KEY"
+SESSION_TIME_MIN = 30
 USERNAME = "soki"
 PASSWORD = "goto"

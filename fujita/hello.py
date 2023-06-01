@@ -10,9 +10,9 @@ def hello_world():
     return "Hello World!"
 
 
-@app.route("/<username>/")
-def profile(username):
-    return "hello I'm {username}"
+# @app.route("/<username>/")
+# def profile(username):
+#     return "hello I'm {username}"
 
 # __name__ にはファイルの実行時とライブラリとして呼びだされたときで違うものが入る
 # 実行時と呼び出し時で別の挙動をさせるならこの書き方をする

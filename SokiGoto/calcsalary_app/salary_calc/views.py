@@ -9,7 +9,19 @@ def input():
 
 @app.route("/output", methods=["GET", "POST"])
 def output():
+    if request.method != "POST":
+        return redirect(url_for("input"))
+
+    if request.form["salary"] == "":
+        flash("給料が未記入です")
+        return redirect(url_for("input"))
+
     salary = int(request.form["salary"])
+
+    if salary < 0:
+        flash("整数値を入力してください")
+        return redirect(url_for("input"))
+
     if salary > 1000000:
         tax = 1000000 * 0.1 + (salary - 1000000) * 0.2
         pay = salary - tax

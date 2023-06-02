@@ -12,6 +12,7 @@ def input():
     # ===========================================
     # sessionを使わない方法
     # salary = request.args.get("salary")
+    # selected_currency = request.args.get("currency")
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     curcon = CurrencyConverter()
     currencies = curcon.currencies
@@ -48,7 +49,7 @@ def output():
         return redirect(url_for("input"))
         # ===========================================
         # sessionを使わない方法
-        # return redirect(url_for("input", salary=salary))
+        # return redirect(url_for("input", salary=salary, currency=currency))
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     if salary < 0:

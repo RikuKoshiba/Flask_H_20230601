@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{ url_for('show_input') }}" method=get>
+    <div class="form-group">
+        <p>{{ script }}</p>
+    </div>
+    <button type="submit" class="btn btn-primary">戻る</button>
+</form>
+{% endblock %}

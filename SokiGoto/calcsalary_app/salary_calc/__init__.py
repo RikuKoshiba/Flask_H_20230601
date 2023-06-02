@@ -9,4 +9,4 @@ app.permanent_session_lifetime = \
     timedelta(minutes=app.config["SESSION_TIME_MIN"])
 
 
-import salary_calc.views
+import salary_calc.views.views

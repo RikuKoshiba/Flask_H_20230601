@@ -2,8 +2,19 @@
 {% block body %}
 <form action="/output" method=post>
     <div class="form-group">
+        <select class="form-select form-select-lg col-md mt-3" name="currency" id="currency-select">
+            {% for currency in currencies %}
+                {% if currency == selected_currency %}
+                    <option value="{{ currency }}" selected>{{ currency }}</option>
+                {% else %}
+                    <option value="{{ currency }}">{{ currency }}</option>
+                {% endif %}    
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
         <label for="InputTitle">給料</label>
-        <input type="number" class="form-control" id="InputTitle" name=salary>
+        <input type="number" class="form-control" id="InputTitle" value="{{ before_salary }}" name=salary>
     </div>
     <button type="submit" class="btn btn-primary">計算する</button>
 </form>

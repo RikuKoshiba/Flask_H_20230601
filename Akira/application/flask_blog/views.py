@@ -7,9 +7,9 @@ def show_entries():
         return redirect(url_for('login'))
     return render_template('entries/index.html')
 
-@app.route("/login")
-def show_entries1():
-    return render_template("login.html")
+# @app.route("/login")
+# def show_entries1():
+#     return render_template("login.html")
 
 @app. route('/login', methods =['GET', 'POST'])
 def login(): 

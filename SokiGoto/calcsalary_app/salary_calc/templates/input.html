@@ -4,7 +4,7 @@
     <div class="form-group">
         <select class="form-select form-select-lg col-md mt-3" name="currency" id="currency-select">
             {% for currency in currencies %}
-                {% if currency == "JPY" %}
+                {% if currency == selected_currency %}
                     <option value="{{ currency }}" selected>{{ currency }}</option>
                 {% else %}
                     <option value="{{ currency }}">{{ currency }}</option>

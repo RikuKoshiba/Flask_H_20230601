@@ -8,12 +8,12 @@
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{url_for('input')}}">計算給与アプリ</a>
+        <a class="navbar-brand" href="{{url_for('input')}}">給与計算アプリ</a>
     </nav>
 
     {% for message in get_flashed_messages() %}
     <div class="alert alert-info" role="alert">
-        {{ message }}
+        {{ message | replace("\n", "</br>") | safe }}
     </div>
     {% endfor %}
     <div class="blog-body">

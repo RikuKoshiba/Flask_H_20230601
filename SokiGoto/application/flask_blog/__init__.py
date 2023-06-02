@@ -10,5 +10,4 @@ app.permanent_session_lifetime = \
     timedelta(minutes=app.config["SESSION_TIME_MIN"])
 
 db = SQLAlchemy(app)
-
-import flask_blog.views
+from flask_blog.views import views, entries

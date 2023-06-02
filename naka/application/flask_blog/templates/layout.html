@@ -25,6 +25,10 @@
           <a class="nav-link navbar-brand" href="{{url_for('login')}}">ログイン</a>
         </li>
         {%else%}
+        
+        <li class="nav-item">
+          <a class="nav-link navbar-brand" href="{{url_for('new_entry')}}">新規投稿</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link navbar-brand" href="{{url_for('logout')}}">ログアウト</a>
         </li>

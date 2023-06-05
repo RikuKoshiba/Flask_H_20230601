@@ -38,7 +38,7 @@ def output():
 
     if salary > 9999999999:
         if currency != "JPY":
-            flash("給与には最大9,999,999,999円まで入力可能です。\n" +
+            flash("給与には最大9,999,999,999円まで入力可能です。</br>" +
                   f"{input_salary:,}{currency}は{salary:,}円です。")
         else:
             flash("給与には最大9,999,999,999円まで入力可能です。")

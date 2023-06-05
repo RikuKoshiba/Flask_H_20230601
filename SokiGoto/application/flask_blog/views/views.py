@@ -3,6 +3,16 @@ import re
 from flask_blog import app
 from flask_blog.models.users import Users
 from flask_blog import db
+from functools import wraps
+
+
+def login_required(view):
+    @wraps(view)
+    def inner(*args, **kwargs):
+        if not session.get("logged_in"):
+            return redirect(url_for("login"))
+        return view(*args, **kwargs)
+    return inner
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -17,7 +27,7 @@ def login():
             flash("パスワードがことなります")
         else:
             session["logged_in"] = True
-            session["id"] = user.id
+            session["user_id"] = user.id
             session["username"] = user.username
             flash("ログインしました")
             return redirect(url_for("show_entries"))

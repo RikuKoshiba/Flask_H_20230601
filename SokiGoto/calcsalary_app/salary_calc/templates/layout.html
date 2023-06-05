@@ -13,7 +13,7 @@
 
     {% for message in get_flashed_messages() %}
     <div class="alert alert-info" role="alert">
-        {{ message | replace("\n", "</br>") | safe }}
+        {{ message | safe }}
     </div>
     {% endfor %}
     <div class="blog-body">

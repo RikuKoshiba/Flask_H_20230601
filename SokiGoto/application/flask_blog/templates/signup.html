@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-<form action="{{ url_for('login') }}" method=post>
+<form action="{{ url_for('signup') }}" method=post>
     <div class="form-group">
         <label for="InputTitle">ユーザ名</label>
         <input type="text" class="form-control" id="InputTitle" name=username>
@@ -9,11 +9,7 @@
         <label for="InputPassword">パスワード</label>
         <input type="password" class="form-control" id="InputPassword" name=password>
     </div>
-    <button type="submit" class="btn btn-primary">ログイン</button>
-</form>
-</br>
-<form action="{{ url_for('signup') }}" method=post>
-    <input type="hidden" name="befor_page" value="login">
-    <button type="submit" class="btn btn-primary">サインアップ</button>
+    <input type="hidden" name="befor_page" value="signup">
+    <button type="submit" class="btn btn-primary">作成</button>
 </form>
 {% endblock %}

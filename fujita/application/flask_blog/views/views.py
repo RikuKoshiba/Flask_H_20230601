@@ -1,12 +1,15 @@
 from flask import request, redirect, url_for, render_template, flash, session
 from flask_blog import app  # __init__.py が読まれている
+from functools import wraps
 
 
-# @app.route("/")  # # http://xxx 以降のURLパスを '/' と指定
-# def show_entries():
-#     if not session.get("logged_in"):
-#         return redirect(url_for("login"))
-#     return render_template("entries/index.html")
+def login_required(view):
+    @wraps(view)
+    def inner(*args, **kargs):
+        if not session.get("logged_in"):
+            return redirect(url_for("login"))
+        return view(*args, **kargs)
+    return inner
 
 
 @app.route("/entries/new", methods=["GET"])

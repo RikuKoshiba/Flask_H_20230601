@@ -33,6 +33,7 @@ def new_entry():
     #     return redirect(url_for('login'))
     return render_template('entries/new.html')
 
+# <int:id>はURLの一番後ろに整数を付ける
 @app.route('/entries/<int:id>', methods=['GET'])
 @login_required
 def show_entry(id):

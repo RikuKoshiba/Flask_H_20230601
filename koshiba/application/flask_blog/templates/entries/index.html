@@ -2,6 +2,7 @@
 {% block body %}
 <ul class="list-group list-group-flush">
 
+<!-- for文のようなしくみ -->
 {% for entry in entries %}
     <div class="card">
         <div class="card-body">
@@ -9,6 +10,7 @@
             <a href="{{ url_for('show_entry', id=entry.id) }}" class="card-link">続きを読む</a>
         </div>
     </div>
+<!-- 投稿がなければこれが実行 -->
 {% else %}
     投稿がありません
 {% endfor %}

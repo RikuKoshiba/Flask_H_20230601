@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if holidays == None %}
+    <h1>管理マスタが登録されていません</h1>
+{% else %}
+    <table class="table">
+        <thead>
+            <tr class="table-primary">
+                <th>祝日</th>
+                <th>タイトル</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for holiday in holidays %}
+                <tr>
+                    <td>{{ holiday.holi_date | safe }}</td>
+                    <td>{{ holiday.holi_text | safe }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+<form action="{{ url_for('input') }}" method=post>
+    <button type="submit" class="btn btn-primary" name="button" value="maintenance_date">戻る</button>
+</form>
+{% endblock %}

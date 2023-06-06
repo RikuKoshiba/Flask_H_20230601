@@ -8,9 +8,6 @@ from holiday import app
 def input():
     date = session.pop("date", "")
     title = session.pop("title", "")
-    # title = ""
-    # date = ""
-    print("aaaaaaaaaaa", title, date)
     return render_template("input.html",
                            title=title,
                            date=date)

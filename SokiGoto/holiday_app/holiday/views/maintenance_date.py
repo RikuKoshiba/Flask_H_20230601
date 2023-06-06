@@ -19,7 +19,6 @@ def maintenance_date():
             flash("祝日 テキストは、1~20文字以内で入力してください")
             session["date"] = date_str
             session["title"] = title
-            # print(session["date"])
             return redirect(url_for("input"))
 
         query = Holiday.query.get(date_type)

@@ -11,5 +11,5 @@ class Holiday(db.Model):
         self.holi_text = holi_text
 
     def __repr__(self):
-        return '<Holiday date:{} text:{}>'.format(self.date, self.text)
+        return '<Holiday holi_date:{} holi_text:{}>'.format(self.holi_date, self.holi_text)
 

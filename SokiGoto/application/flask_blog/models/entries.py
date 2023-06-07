@@ -8,6 +8,7 @@ class Entry(db.Model):
     title = db.Column(db.String(50), unique=True)
     text = db.Column(db.Text)
     user_id = db.Column(db.Integer)
+    user_seq = db.Column(db.Integer)
     created_at = db.Column(db.DateTime)
     last_edited_at = db.Column(db.DateTime)
 

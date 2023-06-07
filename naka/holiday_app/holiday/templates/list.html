@@ -1,28 +1,24 @@
 {%extends "layout.html"%}
 {%block body%}
-<form class="add-entry">
-  <div class="form-group">
-    <label for="InputTitle">祝日日付</label>
-    <input type="date" class="form-control" id="InputDate" name="holiday">
-  </div>
-  <div class="form-group">
-    <label for="InputTitle">祝日テキスト</label>
-    <input type="text" class="form-control" id="InputText" name="holiday_text">
-  </div>
-  <div>
-    <div class="btn-group">
-      <button type="submit" class="btn btn-primary" name="button" value="insert_update">新規登録・更新</button>
-    </div>
-    <div class="btn-group">
-      <button type="submit" class="btn btn-danger">削除</button>
-    </div>
-  </div>
-</form>
 <div>
-
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>祝日</th>
+        <th>テキスト</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for holiday in holiday_list %}
+      <tr>
+        <td>{{holiday.holi_date}}</td>
+        <td>{{holiday.holi_text}}</td>
+      </tr>
+      {%else%}
+      <p>投稿がありません！！！</p>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button type="submit" class="button">戻る</button>
 </div>
-<form action="{{url_for('list')}}" method="POST">
-  <button type="submit" class="btn btn-secondary" style="margin-top:5px" >一覧出力</button>
-
-</form>
 {%endblock%}

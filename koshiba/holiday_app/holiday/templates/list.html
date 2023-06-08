@@ -1,27 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
-<ul class="list-group list-group-flush">
-<div class ="card"> 
-    <div class ="card-body"> 
-        <table class="list">
-            <tread>
-                <tr>
-                    <th scope="col">祝日</th>
-                    <th scope="col">テキスト</th>
-                </tr>
-            </tread>
-            <tbody>
+<div class ="list"> 
+    <table class="table">
+        <tread >
+            <tr class="table-primary">
+                <th scope="col">祝日</th>
+                <th scope="col">テキスト</th>
+            </tr>
+        </tread>
+        <tbody>
 {% for holiday in holidaies %}
-                <tr>
-                    <td>{{ holiday.holi_date }}</td>
-                    <td>{{ holiday.holi_text }}</td>
-                </tr>
+            <tr>
+                <td>{{ holiday.holi_date }}</td>
+                <td>{{ holiday.holi_text }}</td>
+            </tr>
+{% else %}
+    祝日データがありません。
 {% endfor %}
-            </tbody>
-        </table> 
-    </div> 
+        </tbody>
+    </table> 
 </div>
-</ul>
 
 <form action="{{ url_for('m_input') }}" >
     <button type="submit" class="btn btn-primary">戻る</button>

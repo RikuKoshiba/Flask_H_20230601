@@ -2,7 +2,7 @@
 {% block body %}
 
 <form action="{{ url_for('m_result') }}" method=post>
-    <div class="form-group">
+    <div class="form-group" style="margin-top: 30px;">
         <label for="InputTitle">祝日 日付</label>
         <input type="date" class="form-control" id="InputDay" name=holiday>
     </div>
@@ -22,10 +22,10 @@
     </div>
 </form>
 
-    <br>
+    <!-- <br> -->
     <form action="{{ url_for('m_list') }}" method=post>
         <div class="btn-group">
-            <button type="submit" class="btn btn-list" name="button" value="list">一覧出力</button>
+            <button type="submit" class="btn btn-list" name="button" value="list", style="margin-top: 50px; color: white; background-color: rgba(0, 0, 0, 0.441);">一覧出力</button>
         </div>
     </form>
 

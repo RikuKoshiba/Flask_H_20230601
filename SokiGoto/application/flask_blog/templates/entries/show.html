@@ -4,8 +4,8 @@
 <h2>{{ entry.title }}</h2>
 
 </br>
-<h4>筆者</h4>
-{{ writer.username }}
+<h4>ユーザー</h4>
+<a href="{{ url_for('profile', user_id=writer.id) }}">{{ writer.username }}</a>
 
 </br></br>
 <h4>本文</h4>
@@ -34,7 +34,7 @@
 
 </br></br>
 <form action="{{ url_for( session['before_page']) }}" method=post>
-    <button type="submit" class="btn btn-primary">戻る</button>
+    <button type="submit" class="btn btn-primary" name="btn" value="back">戻る</button>
 </form>
 
 {% endblock %}

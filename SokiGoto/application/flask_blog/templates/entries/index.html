@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 {% block body %}
+{% include "search.html" %}
 <ul class="list-group list-group-flush">
 {% for entry in entries %}
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">{{ entry.title }}</h5>
             <div class="d-flex">
-                <div class="my-box w-25">筆者 : {{ entry.username }}</div>
-                <div class="my-box w-50">投稿・編集日時 : {% if entry.last_edited_at != None %} {{ entry.last_edited_at }} {% else %} {{ entry.created_at }} {% endif %}</div>
-                {# <div class="my-box w-25">Flex 3</div> #}
+                <div class="my-box w-25">ユーザー : {{ entry.username }}</div>
+                {# <div class="my-box w-50">投稿・編集日時 : {% if entry.last_edited_at != None %} {{ entry.last_edited_at }} {% else %} {{ entry.created_at }} {% endif %}</div> #}
+                <div class="my-box w-50">投稿日時 : {{ entry.created_at }} </div>
             </div> 
             <a href="{{ url_for('show_entry', id=entry.id) }}" class="card-link">続きを読む</a>
         </div>

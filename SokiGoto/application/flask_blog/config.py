@@ -9,5 +9,5 @@ SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{user}"\
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 DEBUG = True
 SESSION_TIME_MIN = 30
-USERNAME = "soki"
-PASSWORD = "goto"
+HASH_NUM = 752
+ALLOWED_EXTENSIONS = set(['png', 'jpg'])

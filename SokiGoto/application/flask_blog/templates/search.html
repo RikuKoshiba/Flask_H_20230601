@@ -1,0 +1,36 @@
+<form action="{{ url_for('search_result') }}" method=post>
+    <div class="container">
+        <a class="row text-white bg-primary lead" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            検索表示
+        </a>
+        <div class="collapse" id="collapseExample">
+            <div class="row g-3">
+                <div class="col-md-6 mt-3">
+                    <label for="title" class="form-label">タイトル</label>
+                    <input type="text" class="form-control" id="title" name="title" value={{ session.get('search_keyword_title', '') }}>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <label for="UserName" class="form-label">ユーザー</label>
+                    <input type="text" class="form-control" id="userName" name="username" value="{{ session.get('search_keyword_username', '') }}">
+                </div>
+                <div class="col-md-6 mt-3">
+                    <label for="maintext" class="form-label">本文</label>
+                    <input type="text" class="form-control" id="maintext" name="maintext" value="{{ session.get('search_keyword_maintext', '') }}">
+                </div>
+            </div>
+            <label for="datetime-local" class="form-label mt-3">投稿日時</label>
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <input id="startdatetime" type="datetime-local" name="startdatetime" value="{{ session.get('search_time_start_str', '') }}"/>
+                </div>
+                <div class="col-auto">
+                    ~
+                </div>
+                <div class="col-auto">
+                    <input id="enddatetime" type="datetime-local" name="enddatetime" value="{{ session.get('search_time_end_str', '') }}"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3 mb-3" name="btn" value="search">検索</button>
+        </div>
+    </div>
+</form>

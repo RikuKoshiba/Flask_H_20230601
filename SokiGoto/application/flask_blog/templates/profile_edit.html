@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{ url_for('profile_update') }}" method=post>
+    <div class="row g-3">
+        <div class="col-md-6 mt-3">
+            <label for="title" class="form-label">Nickname</label>
+            <input type="text" class="form-control" id="title" name="title" value={{ session.get('search_keyword_title', '') }}>
+        </div>
+        <input type="file" name="example">
+    </div>
+    <input type="submit" name="btn" value="submit">
+</form>
+{% endblock %}

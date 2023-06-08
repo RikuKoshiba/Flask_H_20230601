@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+    <div class="row g-3">
+        <div class="col-md-6 mt-3">
+            <label for="UserName" class="form-label">ユーザー</label>
+            <label for="UserName" class="form-label">{{ user.username }}</label>
+        </div>
+    </div>
+</div>
+
+</br></br>
+{% if user.id == login_user_id %}
+<form action="{{ url_for('profile_edit') }}" method=post>
+    <button type="submit" class="btn btn-primary" name="btn" value="back">編集</button>
+</form>
+{% endif %}
+{% endblock %}

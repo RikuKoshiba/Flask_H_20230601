@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('login')}}" method=get>
+    <h1>あなたは {{ count }} 回でログインできました</h1>
+    <h2>しかしあなたはログアウトするしかない</h2>
+
+    <button type="submit" class="btn btn-danger">ログアウト</button>
+    <button type="submit" class="btn btn-danger">ログアウトしろ</button>
+    <button type="submit" class="btn btn-danger">ログアウトしなさい！</button>
+    <button type="submit" class="btn btn-danger">ログアウトするようにしよう</button>
+    <button type="submit" class="btn btn-danger">ログアウトしろ💞</button>
+</form>
+
+{% endblock %}

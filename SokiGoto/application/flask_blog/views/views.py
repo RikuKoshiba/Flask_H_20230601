@@ -7,6 +7,8 @@ from functools import wraps
 import os
 import hashlib
 import base64
+import random
+import string
 
 
 def login_required(view):
@@ -84,27 +86,50 @@ def logout():
 def profile(user_id):
     login_user_id = session.get("user_id")
     userinfo = Users.query.filter(Users.id == user_id).first()
-    print(userinfo, login_user_id)
     return render_template("profile.html",
                            user=userinfo,
                            login_user_id=login_user_id)
 
 
-@app.route("/profile/edit", methods=["POST"])
+@app.route("/profile/edit", methods=["POST", "GET"])
 @login_required
 def profile_edit():
-    return render_template("profile_edit.html")
+    login_user_id = session.get("user_id")
+    userinfo = Users.query.filter(Users.id == login_user_id).first()
+    return render_template("profile_edit.html", user=userinfo)
 
 
 @app.route("/profile/update", methods=["POST"])
+@login_required
 def profile_update():
-    username = session.get("username")
+    login_user_id = session.get("user_id")
+    user = Users.query.get(login_user_id)
 
-    file = request.files['example']
-    filename = base64.b64encode(os.urandom(32)).decode("utf-8")
-    file.save(os.path.join('./static/image', filename))
-    
-    return redirect(url_for("profile"), username)
+    user.username = request.form["username"]
+
+    file = request.files['file']
+    print(file.filename)
+    check, extension = allwed_file(file.filename)
+    if not check:
+        if extension == "":
+            flash("拡張子がありません")
+            return redirect(url_for("profile_edit"))
+        else:
+            flash(f"{extension}は、対応していない拡張子です。")
+            return redirect(url_for("profile_edit"))
+    else:
+        filename = \
+            f"{randomname(20)}.{extension}"
+        image_path = os.path.join("flask_blog",
+                                  app.config["UPLOAD_FOLDER"],
+                                  filename)
+        file.save(image_path)
+        user.image_path = os.path.join("..", app.config["UPLOAD_FOLDER"], filename)
+
+    db.session.merge(user)
+    db.session.commit()
+    flash("プロフィールを書き換えました")
+    return redirect(url_for("profile", user_id=login_user_id))
 
 
 def password_hash(password, salt):
@@ -126,7 +151,14 @@ def sep_salt_hash(pass_hash):
 
 
 def allwed_file(filename):
-    # .があるかどうかのチェックと、拡張子の確認
-    # OKなら１、だめなら0
-    return '.' in filename and filename.rsplit('.', 1)[1].\
-        lower() in app.config("ALLOWED_EXTENSIONS")
+    if "." not in filename:
+        return False, ""
+    extension = filename.rsplit('.', 1)[1]
+    print(extension)
+    if extension in app.config["ALLOWED_EXTENSIONS"]:
+        return True, extension
+    return False, extension
+
+
+def randomname(n):
+   return ''.join(random.choices(string.ascii_letters + string.digits, k=n))

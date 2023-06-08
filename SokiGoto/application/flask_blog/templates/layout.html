@@ -24,6 +24,9 @@
                     <a class="nav-link" href="{{url_for('show_user_entries')}}">自分の投稿</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('profile', user_id=session.get('user_id', ''))}}">自分のプロフィール</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{url_for('new_entry')}}">新規投稿</a>
                 </li>
                 <li class="nav-item">
